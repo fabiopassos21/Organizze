@@ -13,6 +13,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.projeto.organizze.config.ConfiguracaoFirebase;
 import com.projeto.organizze.model.Usuario;
 
@@ -58,6 +61,7 @@ botaoCadastrar.setOnClickListener(new View.OnClickListener() {
                         Toast.LENGTH_SHORT).show();
             }
         }else {
+
             Toast.makeText(CadastroActivity.this,
                     "Preencha o nome!",
                     Toast.LENGTH_SHORT).show();
@@ -80,8 +84,21 @@ public void CadastrarUsuario() {
                         "Sucesso ao cadastrar usuario!",
                         Toast.LENGTH_SHORT).show();
             }else {
+                String exececao = "";
+                try {
+                    throw task.getException();
+                }catch (FirebaseAuthWeakPasswordException e){
+                    exececao = "Digite uma senha mais forte !";
+                }catch (FirebaseAuthInvalidCredentialsException e){
+                    exececao = "Por favor! digite um email valido";
+                }catch (FirebaseAuthUserCollisionException e ) {
+                    exececao = "Essa conta ja foi cadastrada";
+                }catch (Exception e) {
+                    exececao = "Erro ao cadastrar Usuario" + e.getMessage();
+                    e.printStackTrace();
+                }
                 Toast.makeText(CadastroActivity.this,
-                        "Erro ao cadastrar Usuario!",
+                       exececao,
                         Toast.LENGTH_SHORT).show();
             }
         }});
