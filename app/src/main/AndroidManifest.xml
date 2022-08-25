@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Organizze">
         <activity
+            android:name=".PrincipalActivity"
+            android:exported="false"
+            android:label="@string/title_activity_principal"
+            android:theme="@style/Theme.Organizze.NoActionBar" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
