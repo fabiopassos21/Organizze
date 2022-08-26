@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+
+
+
+   <style name = "Despesatheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name = "windowActionBar">false</item>
+       <item name ="windowNoTitle">true</item>
+       <item name = "colorPrimary">@color/Despesa</item>
+       <item name = "colorPrimaryDark">@color/DespesaDark</item>
+       <item name = "colorAccent">@color/DespesaAccent</item>
+
+
+   </style>
+
+
+
+    <style name = "Receitatheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name = "windowActionBar">false</item>
+        <item name ="windowNoTitle">true</item>
+        <item name = "colorPrimary">@color/Receita</item>
+        <item name = "colorPrimaryDark">@color/ReceitaDark</item>
+        <item name = "colorAccent">@color/ReceitaAccent</item>
+
+
+    </style>
+
+
+
+
+
+
+</resources>

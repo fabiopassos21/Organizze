@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="Despesa">#ff4040</color>
+    <color name="DespesaDark">#ff0000 </color>
+    <color name="DespesaAccent">#e61919 </color>
+    <color name="Receita">#008000</color>
+    <color name="ReceitaDark">#006600 </color>
+    <color name="ReceitaAccent">#005200 </color>
 </resources>
