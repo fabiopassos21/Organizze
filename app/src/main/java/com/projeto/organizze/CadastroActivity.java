@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.projeto.organizze.config.ConfiguracaoFirebase;
+import com.projeto.organizze.helper.Base64Custom;
 import com.projeto.organizze.model.Usuario;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -80,9 +81,10 @@ public void CadastrarUsuario() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
             if (task.isSuccessful()){
-                Toast.makeText(CadastroActivity.this,
-                        "Sucesso ao cadastrar usuario!",
-                        Toast.LENGTH_SHORT).show();
+                String idUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                            usuario.setIdUsuario(idUsuario);
+                            usuario.salvar();
+                finish();
             }else {
                 String exececao = "";
                 try {

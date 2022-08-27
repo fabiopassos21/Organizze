@@ -22,7 +22,8 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_principal" />
-<com.github.clans.fab.FloatingActionMenu
+
+    <com.github.clans.fab.FloatingActionMenu
 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -61,6 +62,18 @@
         app:fab_colorRipple="#99FFFFFF"
         android:onClick="adicionarReceita"
         />
+        <com.github.clans.fab.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/menu_sair"
+            android:src="@drawable/fab_add"
+            app:fab_label="SAIR"
+            app:fab_size="mini"
+            app:fab_colorNormal="#21A35F"
+            app:fab_colorPressed="#FFFFFF"
+            app:fab_colorRipple="#99FFFFFF"
+            android:onClick="sairPrograma"
+            />
 </com.github.clans.fab.FloatingActionMenu>
 
 

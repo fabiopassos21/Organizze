@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                         usuario.setEmail( textoEmail );
                         usuario.setSenha( textoSenha );
                         validarLogin();
+                        abrirTelaPrincipal();
 
                     }else {
                         Toast.makeText(LoginActivity.this,
@@ -76,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 if ( task.isSuccessful() ){
 
                     abrirTelaPrincipal();
+                    finish();
 
                 }else {
 

@@ -14,10 +14,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.projeto.organizze.databinding.ActivityPrincipalBinding;
 
 public class PrincipalActivity extends AppCompatActivity {
-
+private FirebaseAuth autenticacao;
     private AppBarConfiguration appBarConfiguration;
     private ActivityPrincipalBinding binding;
 
@@ -48,8 +49,17 @@ public class PrincipalActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_principal);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
+
+
+
                 || super.onSupportNavigateUp();
     }
+
+    public void sairPrograma (View view) {
+         autenticacao.signOut();
+
+    }
+
     public void adicionarDespesa(View view) {
         startActivity(new Intent(this,DespesasActivity.class));
 
