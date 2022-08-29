@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -25,10 +27,13 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
+
+
+    setContentView(R.layout.activity_principal);
       //  Toolbar toolbar = findViewById(R.id.toolbar);
         //toolbar.setTitle("Organizze");
      //   setSupportActionBar(toolbar);
+       // getSupportActionBar().setTitle("Cadastro ");
 
         textoSaldo = findViewById(R.id.textSaldo);
         textoSaudacao = findViewById(R.id.textSaudacao);
@@ -41,9 +46,17 @@ public class PrincipalActivity extends AppCompatActivity {
         startActivity(new Intent(this, DespesasActivity.class));
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_principal,menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
     public void adicionarReceita(View view){
         startActivity(new Intent(this, ReceitasActivity.class));
     }
+
 
 
     public void configuraCalendarView(){
@@ -57,6 +70,13 @@ public class PrincipalActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+    public void singout (View view) {
+        autenticacao=ConfiguracaoFirebase.getFirebaseAutenticacao();
+        autenticacao.signOut();
+        startActivity( new Intent(this,MainActivity.class));
+        finish();
 
     }
     }

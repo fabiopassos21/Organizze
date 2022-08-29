@@ -43,6 +43,16 @@
             android:onClick="adicionarReceita"
             android:src="@drawable/ic_email_cinza_24dp" />
 
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/Sair"
+            fab:fab_colorNormal="@color/Receita"
+            fab:fab_label="SAIR"
+            fab:fab_size="mini"
+            android:onClick="singout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_email_cinza_24dp" />
+
     </com.github.clans.fab.FloatingActionMenu>
 
     <LinearLayout
@@ -77,6 +87,7 @@
             android:textSize="20sp"
             fab:layout_constraintEnd_toEndOf="parent"
             fab:layout_constraintStart_toStartOf="parent" />
+
     </LinearLayout>
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
