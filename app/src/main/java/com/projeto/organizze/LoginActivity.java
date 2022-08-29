@@ -28,8 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        campoEmail = findViewById(R.id.editEmail);
-        campoSenha = findViewById(R.id.editSenha);
+        campoEmail = findViewById(R.id.editText4);
+        campoSenha = findViewById(R.id.editText5);
         botaoEntrar = findViewById(R.id.buttonEntrar);
 
         botaoEntrar.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                         usuario.setEmail( textoEmail );
                         usuario.setSenha( textoSenha );
                         validarLogin();
-                        abrirTelaPrincipal();
+
 
                     }else {
                         Toast.makeText(LoginActivity.this,
@@ -77,7 +77,6 @@ public class LoginActivity extends AppCompatActivity {
                 if ( task.isSuccessful() ){
 
                     abrirTelaPrincipal();
-                    finish();
 
                 }else {
 

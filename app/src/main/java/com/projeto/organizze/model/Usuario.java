@@ -13,6 +13,7 @@ public class Usuario {
     private Double despesaTotal =0.00;
     public Usuario() {
     }
+    @Exclude
 
     public String getIdUsuario() {
         return idUsuario;
@@ -39,7 +40,6 @@ public class Usuario {
         this.despesaTotal = despesaTotal;
     }
 
-    @Exclude
 public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
     }
