@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout9"
         app:layout_constraintVertical_bias="0.867"
+        android:onClick="salvarReceita"
         app:srcCompat="@drawable/mi_ic_finish" />
 
     <LinearLayout
@@ -58,6 +59,7 @@
         app:layout_constraintVertical_chainStyle="packed">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ex:10/10/2020" />
@@ -76,6 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout8">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editCategoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ex.Salario" />
@@ -91,6 +94,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout7">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ex.salario Mensal" />

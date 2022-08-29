@@ -1,72 +1,62 @@
 package com.projeto.organizze;
 
-import android.content.Intent;
-import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.projeto.organizze.databinding.ActivityPrincipalBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.projeto.organizze.config.ConfiguracaoFirebase;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 public class PrincipalActivity extends AppCompatActivity {
-private FirebaseAuth autenticacao;
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityPrincipalBinding binding;
-
+    private MaterialCalendarView calendarView;
+    private TextView textoSaudacao, textoSaldo;
+    private Double despesaTotal = 0.0;
+    private Double receitaTotal = 0.0;
+    private Double resumoUsuario = 0.0;
+    private FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+    private DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_principal);
+      //  Toolbar toolbar = findViewById(R.id.toolbar);
+        //toolbar.setTitle("Organizze");
+     //   setSupportActionBar(toolbar);
 
-        binding = ActivityPrincipalBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        textoSaldo = findViewById(R.id.textSaldo);
+        textoSaudacao = findViewById(R.id.textSaudacao);
+        calendarView = findViewById(R.id.calendario);
+        configuraCalendarView();
 
-        setSupportActionBar(binding.toolbar);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_principal);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-/*
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+    }
+    public void adicionarDespesa(View view){
+        startActivity(new Intent(this, DespesasActivity.class));
+    }
+
+    public void adicionarReceita(View view){
+        startActivity(new Intent(this, ReceitasActivity.class));
+    }
+
+
+    public void configuraCalendarView(){
+
+        CharSequence meses[] = {"Janeiro","Fevereiro", "Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"};
+        calendarView.setTitleMonths( meses );
+
+        calendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
+
             }
         });
-*/
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_principal);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-
-
-
-                || super.onSupportNavigateUp();
-    }
-
-    public void sairPrograma (View view) {
-         autenticacao.signOut();
 
     }
-
-    public void adicionarDespesa(View view) {
-        startActivity(new Intent(this,DespesasActivity.class));
-
     }
-    public void adicionarReceita (View view) {
-        startActivity(new Intent(this,ReceitasActivity.class));
-
-
-    }
-}

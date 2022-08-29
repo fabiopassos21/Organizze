@@ -51,4 +51,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-common-ktx:20.1.1'
     // Slider
     implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
+    //calendary
+    implementation 'com.github.prolificinteractive:material-calendarview:1.4.3'
+
 }

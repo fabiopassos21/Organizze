@@ -70,7 +70,7 @@ public class MainActivity extends IntroActivity {
 
         if( autenticacao.getCurrentUser() != null ){
             abrirTelaPrincipal();
-  //autenticacao.signOut();
+ // autenticacao.signOut();
         }
     }
 
