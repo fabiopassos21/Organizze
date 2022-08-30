@@ -13,11 +13,7 @@ public class Usuario {
     private Double despesaTotal =0.00;
     public Usuario() {
     }
-    @Exclude
 
-    public String getIdUsuario() {
-        return idUsuario;
-    }
 
         public void salvar() {
        DatabaseReference firebase = ConfiguracaoFirebase.getFirebaseDatabase();
@@ -66,5 +62,10 @@ public void setIdUsuario(String idUsuario) {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    @Exclude
+
+    public String getIdUsuario() {
+        return idUsuario;
     }
 }

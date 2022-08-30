@@ -58,6 +58,7 @@ private Double despesaTotal;
            Double despesaAtualizada = despesaTotal + valorRecuperado;
             atualizarDespesa(despesaAtualizada);
             movimentacao.salvar(data);
+            finish();
 
         }
 
@@ -116,6 +117,7 @@ private Double despesaTotal;
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Usuario usuario = snapshot.getValue(Usuario.class);
+
                 despesaTotal = usuario.getDespesaTotal();
 
             }
@@ -129,7 +131,7 @@ private Double despesaTotal;
          public void atualizarDespesa(Double despesa){
     String emailUsuario = autenticacao.getCurrentUser().getEmail();
     String idUsuario = Base64Custom.codificarBase64(emailUsuario);
-    DatabaseReference usuarioRef = firebaseRef.child("usuarios").child(idUsuario);
-    usuarioRef.child("despesatotal").setValue(despesa);
+    DatabaseReference usuarioRef = firebaseRef.child("Usuarios").child(idUsuario);
+    usuarioRef.child("despesaTotal").setValue(despesa);
         }
 }

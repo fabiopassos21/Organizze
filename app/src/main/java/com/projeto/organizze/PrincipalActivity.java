@@ -1,5 +1,6 @@
 package com.projeto.organizze;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,11 +11,18 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.projeto.organizze.config.ConfiguracaoFirebase;
+import com.projeto.organizze.helper.Base64Custom;
+import com.projeto.organizze.model.Usuario;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
+
+import java.text.DecimalFormat;
 
 public class PrincipalActivity extends AppCompatActivity {
     private MaterialCalendarView calendarView;
@@ -39,7 +47,7 @@ public class PrincipalActivity extends AppCompatActivity {
         textoSaudacao = findViewById(R.id.textSaudacao);
         calendarView = findViewById(R.id.calendario);
         configuraCalendarView();
-
+recuperarResumo();
 
     }
     public void adicionarDespesa(View view){
@@ -79,4 +87,36 @@ public class PrincipalActivity extends AppCompatActivity {
         finish();
 
     }
+    public void recuperarResumo(){
+
+        String emailUsuario = autenticacao.getCurrentUser().getEmail();
+        String idUsuario = Base64Custom.codificarBase64( emailUsuario );
+        DatabaseReference usuarioRef = firebaseRef.child("Usuarios").child( idUsuario );
+
+        usuarioRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                Usuario usuario = snapshot.getValue( Usuario.class );
+
+                despesaTotal = usuario.getDespesaTotal();
+                receitaTotal = usuario.getReceitaTotal();
+                resumoUsuario = receitaTotal - despesaTotal;
+
+                DecimalFormat decimalFormat = new DecimalFormat("0.##");
+                String resultadoFormatado = decimalFormat.format( resumoUsuario );
+
+                textoSaudacao.setText("Olá, " + usuario.getNome() );
+                textoSaldo.setText( "R$ " + resultadoFormatado );
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
+
+}

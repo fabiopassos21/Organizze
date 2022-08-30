@@ -46,9 +46,9 @@ public class ReceitasActivity extends AppCompatActivity {
     }
     public void salvarReceita (View view) {
         if (validarCamposReceita()){
+            movimentacao = new Movimentacao();
 
             String data = campoData.getText().toString();
-            movimentacao = new Movimentacao();
             Double valorRecuperado =  Double.parseDouble(campoValor.getText().toString());
             movimentacao.setValor(valorRecuperado);
             movimentacao.setCategoria(campoCategoria.getText().toString());
@@ -60,7 +60,7 @@ public class ReceitasActivity extends AppCompatActivity {
             Double receitaAtualizada = receitaTotal + valorRecuperado;
             atualizarReceita(receitaAtualizada);
             movimentacao.salvar(data);
-
+finish();
         }
 
     }
@@ -132,7 +132,7 @@ public class ReceitasActivity extends AppCompatActivity {
     public void atualizarReceita   (Double receita){
         String emailUsuario = autenticacao.getCurrentUser().getEmail();
         String idUsuario = Base64Custom.codificarBase64(emailUsuario);
-        DatabaseReference usuarioRef = firebaseRef.child("usuarios").child(idUsuario);
+        DatabaseReference usuarioRef = firebaseRef.child("Usuarios").child(idUsuario);
         usuarioRef.child("receitaTotal").setValue(receita);
     }
 }
