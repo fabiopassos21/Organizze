@@ -13,6 +13,7 @@ public class Movimentacao {
     private String descricao;
     private String tipo;
     private Double valor;
+    private String key;
 
     public Movimentacao() {
     }
@@ -29,6 +30,8 @@ public class Movimentacao {
         firebase.child ("movimentacao").child(idUsuario).child(mesAno).push().setValue(this);
 
     }
+
+
 
     public void setData(String data) {
         this.data = data;
@@ -64,5 +67,13 @@ public class Movimentacao {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

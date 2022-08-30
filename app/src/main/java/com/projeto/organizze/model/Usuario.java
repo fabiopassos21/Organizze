@@ -63,8 +63,10 @@ public void setIdUsuario(String idUsuario) {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    @Exclude
 
+
+
+@Exclude
     public String getIdUsuario() {
         return idUsuario;
     }

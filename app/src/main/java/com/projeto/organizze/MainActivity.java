@@ -18,7 +18,7 @@ public class MainActivity extends IntroActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //  setContentView(R.layout.activity_main);
-        verificarUsuarioLogado();
+     //   verificarUsuarioLogado();
         setButtonBackVisible(false);
         setButtonNextVisible(false);
 
@@ -76,7 +76,7 @@ public class MainActivity extends IntroActivity {
 
 
     public void abrirTelaPrincipal(){
-        startActivity(new Intent(this, PrincipalActivity.class));
+        startActivity(new Intent(this, PrincipalActivity_.class));
     }
 
 }

@@ -11,4 +11,9 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="carregando">Carregando...</string>
     <string name="saldo_geral">Saldo Geral</string>
+
+    <string name="titulo">Titulo</string>
+    <string name="valor">valor</string>
+    <string name="categoria">Categoria</string>
+    <string name="r_0">R$ 0</string>
 </resources>

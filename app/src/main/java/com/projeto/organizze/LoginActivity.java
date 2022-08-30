@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void abrirTelaPrincipal(){
-        startActivity(new Intent(this, PrincipalActivity.class));
+        startActivity(new Intent(this,  PrincipalActivity_.class));
         finish();
     }
 
